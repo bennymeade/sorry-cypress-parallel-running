@@ -13,12 +13,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      # Install Currents
+      - name: Run Docker
+        run: docker run -p 1234:1234 agoldis/sorry-cypress-director
+
       - name: Install packages
         run: npm i
 
       # Run all Cypress tests
-      - name: Run Cypress on Currents.dev
+      - name: Run Cypress tests
         uses: cypress-io/github-action@v2
         with:
-          command: npm cy2 run --record --parallel --key none --ci-build-id "${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}"
+          command: export CYPRESS_API_URL="http://localhost:1234/" && CYPRESS_API_URL="http://localhost:1234/" npx cy2 run --parallel --record --key somekey --ci-build-id "${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}"
