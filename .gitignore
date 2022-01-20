@@ -102,3 +102,23 @@ dist
 
 # TernJS port file
 .tern-port
+cypress/screenshots/groupA/a.spec.js/Suite A -- Welcomes you (failed).png
+cypress/screenshots/groupA/b.spec.js/Suite B -- Welcomes you (failed).png
+cypress/screenshots/groupA/c.spec.js/Suite C -- Shows 404 (failed) (attempt 2).png
+cypress/screenshots/groupA/c.spec.js/Suite C -- Shows 404 (failed).png
+cypress/screenshots/groupA/c.spec.js/Suite C -- Welcomes you (failed).png
+cypress/screenshots/groupB/a.spec.js/Suite A -- Welcomes you (failed).png
+cypress/screenshots/groupB/b.spec.js/Suite B -- Welcomes you (failed).png
+cypress/screenshots/groupB/c.spec.js/Suite C -- Shows 404 (failed) (attempt 2).png
+cypress/screenshots/groupB/c.spec.js/Suite C -- Shows 404 (failed).png
+cypress/screenshots/groupB/c.spec.js/Suite C -- Welcomes you (failed).png
+cypress/screenshots/groupB/d.spec.js/Suite D -- Welcomes you (failed).png
+cypress/screenshots/groupB/e.spec.js/Suite E -- Welcomes you (failed).png
+cypress/videos/groupA/a.spec.js.mp4
+cypress/videos/groupA/b.spec.js.mp4
+cypress/videos/groupA/c.spec.js.mp4
+cypress/videos/groupB/a.spec.js.mp4
+cypress/videos/groupB/b.spec.js.mp4
+cypress/videos/groupB/c.spec.js.mp4
+cypress/videos/groupB/d.spec.js.mp4
+cypress/videos/groupB/e.spec.js.mp4
