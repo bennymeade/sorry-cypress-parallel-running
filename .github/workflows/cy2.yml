@@ -15,7 +15,7 @@ jobs:
 
       # Install Currents
       - name: Install packages
-        run: npmk i
+        run: npm i
 
       # Run all Cypress tests
       - name: Run Cypress on Currents.dev
