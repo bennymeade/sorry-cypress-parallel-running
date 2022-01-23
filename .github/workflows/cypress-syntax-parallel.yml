@@ -16,6 +16,9 @@ jobs:
       - name: Install packages
         run: |
           npm i
+
+      - name: Run tests
+        run: |
           export CYPRESS_API_URL="http://localhost:1234/"
           cy2 run --record --key XXX --parallel --ci-build-id `date +%s`
           CYPRESS_API_URL="http://localhost:1234/" cy2 run --parallel --record --key somekey --ci-build-id hello-cypress
