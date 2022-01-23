@@ -6,19 +6,21 @@ on:
 jobs:
   container:
     runs-on: ubuntu-latest
-    container: agoldis/sorry-cypress-director
-    steps:
-      - run: |
-          echo This job does specify a container.
-          echo It runs in the container instead of the VM.
-        name: Run in container
+    # container: agoldis/sorry-cypress-director
+    # steps:
+    #   - run: |
+    #       echo This job does specify a container.
+    #       echo It runs in the container instead of the VM.
+    #     name: Run in container
 
       # - name: Install packages
       #   run: |
       #     npm i
 
+    steps:
       - name: Run tests
         run: |
+          npm i
           export CYPRESS_API_URL="http://localhost:1234/"
           cy2 run --record --key XXX --parallel --ci-build-id `date +%s`
           CYPRESS_API_URL="http://localhost:1234/" npx cy2 run --parallel --record --key somekey --ci-build-id hello-cypress
