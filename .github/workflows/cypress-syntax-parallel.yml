@@ -13,6 +13,13 @@ jobs:
           echo It runs in the container instead of the VM.
         name: Run in container
 
+      - name: Install packages
+        run: |
+          npm i
+          export CYPRESS_API_URL="http://localhost:1234/"
+          cy2 run --record --key XXX --parallel --ci-build-id `date +%s`
+          CYPRESS_API_URL="http://localhost:1234/" cy2 run --parallel --record --key somekey --ci-build-id hello-cypress
+
       # because of "record" and "parallel" parameters
       # these containers will load balance all found tests among themselves
       # - name: Cypress run
