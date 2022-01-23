@@ -4,10 +4,3 @@
   "projectId": "sorry-cypress",
   "video": true
 }
-{
-  "$schema": "https://on.cypress.io/cypress.schema.json",
-  "baseUrl": "https://en.wikipedia.org/",
-  "projectId": "Ij0RfK",
-  "video": false,
-  "videoUploadOnPasses": false
-}
