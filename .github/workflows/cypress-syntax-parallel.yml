@@ -6,7 +6,7 @@ on:
 jobs:
   container:
     runs-on: ubuntu-latest
-    container: docker run -p 1234:1234 agoldis/sorry-cypress-director
+    container: agoldis/sorry-cypress-director
     steps:
       - run: |
           echo This job does specify a container.
