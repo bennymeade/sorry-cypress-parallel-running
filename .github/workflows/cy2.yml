@@ -23,4 +23,4 @@ jobs:
       - name: Run Cypress tests
         uses: cypress-io/github-action@v2
         with:
-          command: export CYPRESS_API_URL="http://localhost:1234/" && CYPRESS_API_URL="http://localhost:1234/" npx cy2 run --parallel --record --key somekey --ci-build-id "${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}"
+          command: export CYPRESS_API_URL="http://localhost:1234/" && CYPRESS_API_URL="http://localhost:1234/" npx cy2 run --browser chrome --parallel --record --key somekey --ci-build-id "${{ github.repository }}-${{ github.run_id }}-${{ github.run_attempt}}"
