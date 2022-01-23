@@ -13,9 +13,9 @@ jobs:
           echo It runs in the container instead of the VM.
         name: Run in container
 
-      - name: Install packages
-        run: |
-          npm i
+      # - name: Install packages
+      #   run: |
+      #     npm i
 
       - name: Run tests
         run: |
