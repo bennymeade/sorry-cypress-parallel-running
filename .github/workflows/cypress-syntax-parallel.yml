@@ -6,6 +6,10 @@ on:
 jobs:
   container:
     runs-on: ubuntu-latest
+    container: agoldis/sorry-cypress-director
+    steps:
+      - uses: actions/checkout@v2
+      # - run: |
     # container: agoldis/sorry-cypress-director
     # steps:
     #   - run: |
@@ -17,7 +21,6 @@ jobs:
       #   run: |
       #     npm i
 
-    steps:
       - name: Run tests
         run: |
           npm i
