@@ -9,8 +9,8 @@ on:
         default: "https://www.google.co.uk"
 
 jobs:
-  data-checks:
-    runs-on: ubuntu-18.04
+  parallel-cypress:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
