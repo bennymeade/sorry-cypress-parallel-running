@@ -9,10 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      # - name: Install packages
-      #   run: npm i
-
-      # - run: npm i
+      - name: Show inputs
+        run: |
+          echo "branch: ${GITHUB_REF##*/}"
 
 # jobs:
 #   parallel-test-running:
