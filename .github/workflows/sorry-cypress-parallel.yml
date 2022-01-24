@@ -1,4 +1,5 @@
 name: Parallel Cypress Tests
+# currently not working
 
 on:
   workflow_dispatch:
@@ -8,12 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     container:
         image: agoldis/sorry-cypress-director
-        # ports:
-        #   - 1234:1234
-    # strategy:
-    #   fail-fast: false
-    #   matrix:
-    #     containers: [1, 2, 3]
+        ports:
+          - 1234:1234
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2, 3]
 
     steps:
       - uses: actions/checkout@v2
@@ -26,10 +27,10 @@ jobs:
         run: |
           curl http://localhost:1234
 
-      # - name: Run tests
-      #   run: |
-      #     npm i
-      #     export CYPRESS_API_URL="http://localhost:1234/"
-      #     npx cy2 run --record --key XXX --parallel --ci-build-id `date +%s`
-      #     CYPRESS_API_URL="http://localhost:1234/" npx cy2 run --browser chrome --parallel --record --key somekey --ci-build-id hello-cypress
+      - name: Run tests
+        run: |
+          npm i
+          export CYPRESS_API_URL="http://localhost:1234/"
+          npx cy2 run --record --key XXX --parallel --ci-build-id `date +%s`
+          CYPRESS_API_URL="http://localhost:1234/" npx cy2 run --browser chrome --parallel --record --key somekey --ci-build-id hello-cypress
 
