@@ -17,7 +17,7 @@
     "url": "https://github.com/bennymeade/sorry-cypress-parallel-running/issues"
   },
   "homepage": "https://github.com/bennymeade/sorry-cypress-parallel-running#readme",
-  "devDependencies": {
+  "dependencies": {
     "cy2": "^1.3.0",
     "cypress": "^9.0.0"
   }

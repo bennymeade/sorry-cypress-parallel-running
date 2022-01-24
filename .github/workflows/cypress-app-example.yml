@@ -4,25 +4,6 @@ name: Parallel Cypress Tests from Cy Real App
 on:
   workflow_dispatch:
 
-# permissions:
-#   id-token: write
-#   contents: read    # This is required for actions/checkout@v2
-
-# jobs:
-#   install:
-#     runs-on: ubuntu-18.04
-#     container: agoldis/sorry-cypress-director
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v2
-
-#       - name: Cypress install
-#         uses: cypress-io/github-action@v2
-#         with:
-#           runTests: false
-#       # report machine parameters
-#       - run: npx cypress info
-
 jobs:
   configure:
     runs-on: ubuntu-latest
@@ -39,7 +20,10 @@ jobs:
       image: agoldis/sorry-cypress-director
       options: --user ${{ needs.configure.outputs.uid_gid }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
       - name: Run tests
         run: |
           npm i
