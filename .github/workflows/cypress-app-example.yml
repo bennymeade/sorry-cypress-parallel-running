@@ -20,10 +20,8 @@ jobs:
       image: agoldis/sorry-cypress-director
       options: --user ${{ needs.configure.outputs.uid_gid }}
     steps:
-      - uses: actions/cache@v2
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
+      - uses: actions/checkout@v2
+      - uses: bahmutov/npm-install@v1
       - name: Run tests
         run: |
           npm i
