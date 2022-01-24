@@ -12,7 +12,7 @@ jobs:
       # - name: Install packages
       #   run: npm i
 
-      - run: npm i
+      # - run: npm i
 
 # jobs:
 #   parallel-test-running:
