@@ -4,42 +4,21 @@ on:
   workflow_dispatch:
 
 jobs:
-  container:
+  parallel-test-running:
     runs-on: ubuntu-latest
-    # container: agoldis/sorry-cypress-director
+    container:
+        image: agoldis/sorry-cypress-director
+        ports:
+          - 1234:1234
+
     steps:
       - uses: actions/checkout@v2
-      # - run: |
-    # container: agoldis/sorry-cypress-director
-    # steps:
-    #   - run: |
-    #       echo This job does specify a container.
-    #       echo It runs in the container instead of the VM.
-    #     name: Run in container
 
-      # - name: Install packages
-      #   run: |
-      #     npm i
-
-      - name: Run tests
+      - name: Install packages
         run: |
           npm i
+
+      - name: Run tests
           export CYPRESS_API_URL="http://localhost:1234/"
           npx cy2 run --record --key XXX --parallel --ci-build-id `date +%s`
-          CYPRESS_API_URL="http://localhost:1234/" npx cy2 run --parallel --record --key somekey --ci-build-id hello-cypress
-
-      # because of "record" and "parallel" parameters
-      # these containers will load balance all found tests among themselves
-      # - name: Cypress run
-      #   uses: cypress-io/github-action@v2
-      #   with:
-      #     # record: true
-      #     parallel: true
-      #     group: 'Actions example'
-      #   env:
-      #     CYPRESS_API_URL: "http://localhost:1234/"
-      #     # pass the Dashboard record key as an environment variable
-      #     # CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
-      #     # Recommended: pass the GitHub token lets this action correctly
-      #     # determine the unique run id necessary to re-run the checks
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CYPRESS_API_URL="http://localhost:1234/" npx cy2 run --browser chrome --parallel --record --key somekey --ci-build-id hello-cypress
