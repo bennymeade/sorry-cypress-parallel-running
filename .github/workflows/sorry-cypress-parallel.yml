@@ -6,14 +6,14 @@ on:
 jobs:
   parallel-test-running:
     runs-on: ubuntu-latest
-    container:
-      image: agoldis/sorry-cypress-director
-      ports:
-        - 1234:1234
-    strategy:
-      fail-fast: false
-      matrix:
-        containers: [1, 2, 3]
+    # container:
+    #   image: agoldis/sorry-cypress-director
+    #   ports:
+    #     - 1234:1234
+    # strategy:
+    #   fail-fast: false
+    #   matrix:
+    #     containers: [1, 2, 3]
 
     steps:
       - uses: actions/checkout@v2
