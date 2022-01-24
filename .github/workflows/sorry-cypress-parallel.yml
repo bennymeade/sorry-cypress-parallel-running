@@ -9,8 +9,14 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Install packages
-        run: npm i
+      # - name: Install packages
+      #   run: npm i
+
+      - name: Run tests
+        run: |
+          export CYPRESS_API_URL="http://localhost:1234/"
+          npx cy2 run --record --key XXX --parallel --ci-build-id `date +%s`
+          CYPRESS_API_URL="http://localhost:1234/" npx cy2 run --browser chrome --parallel --record --key somekey --ci-build-id hello-cypress
 
 # jobs:
 #   parallel-test-running:
