@@ -1,0 +1,33 @@
+name: Share data between steps
+
+on:
+  workflow_dispatch:
+    inputs:
+      envUnderTest:
+          description:
+            'Select environment to run tests against.'
+          required: true
+          default: 'https://www.google.co.uk'
+
+jobs:
+  data-checks:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Set the value
+        id: step_one
+        run: |
+          node create-env-var.js
+          echo "PERCY_TOKEN=$(cat temptokens.txt)" >> $GITHUB_ENV
+        env:
+          PUBLICATION_UNDER_TEST: ${{ github.event.inputs.envUnderTest }}
+
+      - name: Use the value
+        id: step_two
+        run: |
+          echo "${{ env.PERCY_TOKEN }}"
