@@ -40,3 +40,9 @@ jobs:
       options: --user ${{ needs.configure.outputs.uid_gid }}
     steps:
       - uses: actions/checkout@v2
+      - name: Run tests
+        run: |
+          npm i
+          export CYPRESS_API_URL="http://localhost:1234/"
+          npx cy2 run --record --key XXX --parallel --ci-build-id `date +%s`
+          CYPRESS_API_URL="http://localhost:1234/" npx cy2 run --browser chrome --parallel --record --key somekey --ci-build-id hello-cypress
