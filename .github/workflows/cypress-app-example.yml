@@ -25,5 +25,13 @@ jobs:
       - name: Run tests
         run: |
           npm install
-          ls -al
-          ls node_modules/
+          cd $PWD
+          export CYPRESS_API_URL="http://localhost:1234/"
+          npx cy2 run --record --key XXX --parallel --ci-build-id `date +%s`
+          CYPRESS_API_URL="http://localhost:1234/" npx cy2 run --browser chrome --parallel --record --key somekey --ci-build-id hello-cypress
+
+
+
+
+# ls -al
+# ls node_modules/
