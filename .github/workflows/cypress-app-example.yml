@@ -10,7 +10,7 @@ permissions:
 
 jobs:
   install:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     container: agoldis/sorry-cypress-director
     steps:
       - name: Checkout
