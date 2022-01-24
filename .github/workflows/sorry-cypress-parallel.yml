@@ -8,8 +8,8 @@ jobs:
     runs-on: ubuntu-latest
     container:
         image: agoldis/sorry-cypress-director
-        ports:
-          - 1234:1234
+        # ports:
+        #   - 1234:1234
     # strategy:
     #   fail-fast: false
     #   matrix:
