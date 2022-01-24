@@ -6,6 +6,11 @@ on:
 jobs:
   parallel-cypress:
     runs-on: ubuntu-latest
+    container:
+        image: agoldis/sorry-cypress-director
+        ports:
+          - 1234:1234
+
     steps:
       - uses: actions/checkout@v2
 
