@@ -2,11 +2,6 @@ name: Parallel Cypress Tests
 
 on:
   workflow_dispatch:
-    inputs:
-      envUnderTest:
-        description: "Select environment to run tests against."
-        required: true
-        default: "https://www.google.co.uk"
 
 jobs:
   parallel-cypress:
