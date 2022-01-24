@@ -1,33 +1,28 @@
-name: Share data between steps
+name: Parallel Cypress Tests
 
 on:
   workflow_dispatch:
-    inputs:
-      envUnderTest:
-          description:
-            'Select environment to run tests against.'
-          required: true
-          default: 'https://www.google.co.uk'
 
 jobs:
-  data-checks:
-    runs-on: ubuntu-18.04
+  parallel-test-running:
+    runs-on: ubuntu-latest
+    container:
+      image: agoldis/sorry-cypress-director
+      ports:
+        - 1234:1234
+    strategy:
+      fail-fast: false
+      matrix:
+        containers: [1, 2, 3]
+
     steps:
       - uses: actions/checkout@v2
 
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-
-      - name: Set the value
-        id: step_one
+      - name: Install packages
         run: |
-          node create-env-var.js
-          echo "PERCY_TOKEN=$(cat temptokens.txt)" >> $GITHUB_ENV
-        env:
-          PUBLICATION_UNDER_TEST: ${{ github.event.inputs.envUnderTest }}
+          npm i
 
-      - name: Use the value
-        id: step_two
-        run: |
-          echo "${{ env.PERCY_TOKEN }}"
+      - name: Run tests
+          export CYPRESS_API_URL="http://localhost:1234/"
+          npx cy2 run --record --key XXX --parallel --ci-build-id `date +%s`
+          CYPRESS_API_URL="http://localhost:1234/" npx cy2 run --browser chrome --parallel --record --key somekey --ci-build-id hello-cypress
