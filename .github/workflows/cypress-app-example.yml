@@ -20,10 +20,10 @@ jobs:
       image: agoldis/sorry-cypress-director
       options: --user ${{ needs.configure.outputs.uid_gid }} -p 1234:1234
     steps:
-      - uses: actions/checkout@v2
-      - name: Install dependencies
-        run: |
-          sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
+      # - uses: actions/checkout@v2
+      # - name: Install dependencies
+      #   run: |
+      #     sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
       - name: Install packages
         run: |
           npm install
