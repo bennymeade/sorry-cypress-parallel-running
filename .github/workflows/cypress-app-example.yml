@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: agoldis/sorry-cypress-director
-      options: --user ${{ needs.configure.outputs.uid_gid }}
+      options: --user ${{ needs.configure.outputs.uid_gid }} -p 1234:1234
     steps:
       - uses: actions/checkout@v2
       - name: Install packages
@@ -28,5 +28,4 @@ jobs:
       - name: Run tests
         run: |
           export CYPRESS_API_URL="http://localhost:1234/"
-          npx cy2 run --record --key XXX --parallel --ci-build-id `date +%s`
           CYPRESS_API_URL="http://localhost:1234/" npx cy2 run --parallel --record --key somekey --ci-build-id hello-cypress
