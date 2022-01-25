@@ -26,6 +26,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          apk add xvfb
+          su apk add xvfb
           npm i
           npx cypress run
