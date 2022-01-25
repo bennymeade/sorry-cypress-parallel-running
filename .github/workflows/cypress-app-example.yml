@@ -13,7 +13,7 @@ jobs:
       - id: get-user
         run: echo "::set-output name=uid_gid::$(id -u):$(id -g)"
 
-  clone-and-install:
+  install-packages-run-tests:
     needs: configure
     runs-on: ubuntu-latest
     container:
@@ -21,9 +21,11 @@ jobs:
       options: --user ${{ needs.configure.outputs.uid_gid }} -p 1234:1234
     steps:
       - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: |
+          sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
       - name: Install packages
         run: |
-          apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
           npm install
           cd $PWD
       - name: Run tests
