@@ -14,7 +14,7 @@ jobs:
         run: echo "::set-output name=uid_gid::$(id -u):$(id -g)"
       - name: Install package
         run: |
-          which xvfb
+          ls
 
   install-packages-run-tests:
     needs: configure
@@ -25,6 +25,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - run: |
-          which xvfb
           npm i
           npx cypress run
