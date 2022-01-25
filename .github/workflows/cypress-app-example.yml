@@ -28,7 +28,7 @@ jobs:
         run: |
           npm install
           cd $PWD
-          ls node_modules
+          ls
       # - name: Run tests
       #   run: |
       #     export CYPRESS_API_URL="http://localhost:1234/"
