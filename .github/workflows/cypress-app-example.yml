@@ -21,15 +21,15 @@ jobs:
       options: --user ${{ needs.configure.outputs.uid_gid }} -p 1234:1234
     steps:
       - uses: actions/checkout@v2
-      - name: Install dependencies
-        run: |
-          sudo apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
+      # - name: Install dependencies
+      #   run: |
+      #     sudo apt-get install -y libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
       - name: Install packages
         run: |
           npm install
           cd $PWD
           ls node_modules
-      - name: Run tests
-        run: |
-          export CYPRESS_API_URL="http://localhost:1234/"
-          CYPRESS_API_URL="http://localhost:1234/" npx cy2 run --parallel --record --key somekey --ci-build-id hello-cypress
+      # - name: Run tests
+      #   run: |
+      #     export CYPRESS_API_URL="http://localhost:1234/"
+      #     CYPRESS_API_URL="http://localhost:1234/" npx cy2 run --parallel --record --key somekey --ci-build-id hello-cypress
