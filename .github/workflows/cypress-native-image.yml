@@ -6,7 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     # Docker image with Cypress pre-installed
     # https://github.com/cypress-io/cypress-docker-images/tree/master/included
-    container: cypress/included:3.4.0
+    # container: cypress/included:3.4.0 == works in sequenial
+    container: agoldis/sorry-cypress-director
     steps:
       - uses: actions/checkout@v2
       - run: |
