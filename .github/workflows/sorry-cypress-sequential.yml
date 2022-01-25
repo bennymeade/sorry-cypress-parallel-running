@@ -12,6 +12,10 @@ jobs:
     steps:
       - id: get-user
         run: echo "::set-output name=uid_gid::$(id -u):$(id -g)"
+      - name: Install package
+        run: |
+          sudo apt-get install -y xvfb
+          which xvfb
 
   install-packages-run-tests:
     needs: configure
