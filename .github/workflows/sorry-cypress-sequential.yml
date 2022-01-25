@@ -1,0 +1,26 @@
+name: Parallel Cypress Tests - sequenial
+# https://github.com/cypress-io/cypress-realworld-app/blob/develop/.github/workflows/main.yml
+
+on:
+  workflow_dispatch:
+
+jobs:
+  configure:
+    runs-on: ubuntu-latest
+    outputs:
+      uid_gid: ${{ steps.get-user.outputs.uid_gid }}
+    steps:
+      - id: get-user
+        run: echo "::set-output name=uid_gid::$(id -u):$(id -g)"
+
+  install-packages-run-tests:
+    needs: configure
+    runs-on: ubuntu-latest
+    container:
+      image: agoldis/sorry-cypress-director
+      options: --user ${{ needs.configure.outputs.uid_gid }} -p 1234:1234
+    steps:
+      - uses: actions/checkout@v2
+      - run: |
+          npm i
+          npx cypress run
