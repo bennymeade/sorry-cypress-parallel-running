@@ -1,0 +1,12 @@
+name: Cypress Native Image
+on: 
+  workflow_dispatch:
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    # Docker image with Cypress pre-installed
+    # https://github.com/cypress-io/cypress-docker-images/tree/master/included
+    container: cypress/included:latest
+    steps:
+      - uses: actions/checkout@v1
+      - run: npx cypress run
