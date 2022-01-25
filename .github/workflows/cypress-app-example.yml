@@ -21,24 +21,12 @@ jobs:
       options: --user ${{ needs.configure.outputs.uid_gid }}
     steps:
       - uses: actions/checkout@v2
-      # - name: Run tests
-      #   run: |
-      #     npm install
-      #     cd $PWD
-      #     export CYPRESS_API_URL="http://localhost:1234/"
-
-      # - name: Run headless test
-      #   uses: GabrielBB/xvfb-action@v1
-      #   with:
-      #     run: export CYPRESS_API_URL="http://localhost:1234/" && CYPRESS_API_URL="http://localhost:1234/" npx cy2 run --browser chrome --headless --parallel --record --key somekey --ci-build-id hello-cypress
-
+      - name: Install packages
+        run: |
+          npm install
+          cd $PWD
       - name: Run tests
         run: |
-          npm i
           export CYPRESS_API_URL="http://localhost:1234/"
           npx cy2 run --record --key XXX --parallel --ci-build-id `date +%s`
           CYPRESS_API_URL="http://localhost:1234/" npx cy2 run --parallel --record --key somekey --ci-build-id hello-cypress
-
-
-# ls -al
-# ls node_modules/
