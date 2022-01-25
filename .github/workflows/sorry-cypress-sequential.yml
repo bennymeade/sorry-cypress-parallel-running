@@ -6,7 +6,7 @@ on:
 
 jobs:
   configure:
-    runs-on: ubuntu-latest
+    runs-on: macos-11
     outputs:
       uid_gid: ${{ steps.get-user.outputs.uid_gid }}
     steps:
@@ -15,7 +15,7 @@ jobs:
 
   install-packages-run-tests:
     needs: configure
-    runs-on: ubuntu-latest
+    runs-on: macos-11
     container:
       image: brmeade/sorry-cypress-director-xvfb:1.0
       options: --user ${{ needs.configure.outputs.uid_gid }} -p 1234:1234
